@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     }
     public void playGame() // gán nút
     {
+        scoreManager.startgame = true;
         panelStart.SetActive(false);
         panelGamePlay.SetActive(true);
         dino.anim.SetBool("isRun", true);
@@ -34,15 +35,20 @@ public class GameManager : MonoBehaviour
     }
     public void GameLose()
     {
+        scoreManager.startgame = false;
+
+        scoreManager.StartTime = Time.time;
         panelLose.SetActive(true);
         panelGamePlay.SetActive(false);
         DestroyAllChild(spawner.containerCoin);
         DestroyAllChild(spawner.containerTree);
         spawner.StopInVoke();
         Time.timeScale = 0;
+
     }
     public void RetryGame() // gán nút
     {
+        scoreManager.startgame = true;
         dino.isAlive = true;
         Time.timeScale = 1;
         panelGamePlay.SetActive(true);
@@ -55,7 +61,10 @@ public class GameManager : MonoBehaviour
     {
         foreach(Transform child in parent)
         {
-            Destroy(child.gameObject);
+            if (child != null)
+            {
+                Destroy(child.gameObject);
+            }
         }
     }
 }
