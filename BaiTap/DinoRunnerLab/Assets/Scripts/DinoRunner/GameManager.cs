@@ -27,6 +27,11 @@ public class GameManager : MonoBehaviour
     public void playGame() // gán nút
     {
         scoreManager.startgame = true;
+        if (scoreManager.firstStart)
+        {
+            scoreManager.StartTime = Time.time;
+            scoreManager.firstStart = false;
+        }
         panelStart.SetActive(false);
         panelGamePlay.SetActive(true);
         dino.anim.SetBool("isRun", true);
@@ -48,6 +53,7 @@ public class GameManager : MonoBehaviour
     }
     public void RetryGame() // gán nút
     {
+        scoreManager.firstStart = true;
         scoreManager.startgame = true;
         dino.isAlive = true;
         Time.timeScale = 1;

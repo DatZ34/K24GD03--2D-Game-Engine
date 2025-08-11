@@ -14,6 +14,7 @@ public class ScoreManager : MonoBehaviour
     private Spawner spawner;
     private DateTime CurrentTimeS;
     public bool startgame = false;
+    public bool firstStart = true;
     public float StartTime;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -31,10 +32,7 @@ public class ScoreManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(startgame)
-        {
-            startTimePlay();
-        }
+
 
         TimeSpan s = DateTime.Now - CurrentTimeS;
         int minus = s.Minutes;
@@ -62,6 +60,10 @@ public class ScoreManager : MonoBehaviour
             spawner.countDownSpawnTree = 10f;
             spawner.SpeedTree = 5;
             Speed_txt.text = "SpeedTree: " + spawner.SpeedTree;
+        }
+        if (startgame)
+        {
+            startTimePlay();
         }
     }
     public void GetScore(int score)
