@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlatFormControll : MonoBehaviour
 {
@@ -90,13 +90,15 @@ public class PlatFormControll : MonoBehaviour
         {
             foreach (ContactPoint2D contacts in collision.contacts)
             {
-                if (contacts.normal == Vector2.down) 
+                if (contacts.normal.y < -0.5f) 
                 {
+                    Debug.Log("Nhảy lên platform");
                     collision.transform.SetParent(transform);
                     break;
                 }
             }
         }
+
     }
     private void OnCollisionExit2D(Collision2D collision)
     {

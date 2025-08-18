@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PLayer : MonoBehaviour
 {
@@ -32,6 +32,19 @@ public class PLayer : MonoBehaviour
         {
             isGround = true;
         }
-        
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            foreach (ContactPoint2D contacts in collision.contacts)
+            {
+                if (contacts.normal.y > 0.5f)
+                {
+                    Debug.Log("Tiêu diệt enemy");
+
+                    Destroy(collision.gameObject);
+                    break;
+                }
+            }
+        }
+
     }
 }
