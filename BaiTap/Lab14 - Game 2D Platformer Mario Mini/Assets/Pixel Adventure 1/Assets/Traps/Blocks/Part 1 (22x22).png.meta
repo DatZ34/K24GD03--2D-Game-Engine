@@ -142,10 +142,10 @@ TextureImporter:
       name: Part 1 (22x22)_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 22
-        height: 22
+        x: 3
+        y: 7
+        width: 16
+        height: 9
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,8 +154,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8ce795907c76b1e4298b647368f6202d
-      internalID: 6769692827079125451
+      spriteID: 35b8d44536139964689cd1bf082ba80c
+      internalID: -587344934
       vertices: []
       indices: 
       edges: []
@@ -164,10 +164,10 @@ TextureImporter:
       name: Part 1 (22x22)_1
       rect:
         serializedVersion: 2
-        x: 22
-        y: 0
-        width: 22
-        height: 22
+        x: 25
+        y: 7
+        width: 16
+        height: 9
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -176,8 +176,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e9c2d188e3404904f8aba6ea042f52f1
-      internalID: 6851959776083884160
+      spriteID: 0516bc8ff82ef9f43a2c66558196ad0f
+      internalID: 515148904
       vertices: []
       indices: 
       edges: []
@@ -186,10 +186,10 @@ TextureImporter:
       name: Part 1 (22x22)_2
       rect:
         serializedVersion: 2
-        x: 44
-        y: 0
-        width: 22
-        height: 22
+        x: 47
+        y: 7
+        width: 16
+        height: 9
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -198,8 +198,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c6b9e99ab0d47cb42afc16d3634ebfc1
-      internalID: 7713393198726954842
+      spriteID: 19ed517681002c946b7f6c5652996910
+      internalID: -325811090
       vertices: []
       indices: 
       edges: []
@@ -218,9 +218,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Part 1 (22x22)_0: 6769692827079125451
-      Part 1 (22x22)_1: 6851959776083884160
-      Part 1 (22x22)_2: 7713393198726954842
+      Part 1 (22x22)_0: -587344934
+      Part 1 (22x22)_1: 515148904
+      Part 1 (22x22)_2: -325811090
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
