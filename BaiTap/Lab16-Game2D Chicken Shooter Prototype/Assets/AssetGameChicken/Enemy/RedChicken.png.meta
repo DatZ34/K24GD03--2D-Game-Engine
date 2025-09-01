@@ -410,7 +410,18 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      RedChicken_0: 2906483388191012316
+      RedChicken_1: 1340432711222232056
+      RedChicken_10: -7300271095412449765
+      RedChicken_2: 8739036832123278797
+      RedChicken_3: 4852799088210622423
+      RedChicken_4: 3444857030385818739
+      RedChicken_5: 9000895887257113144
+      RedChicken_6: 848871574867097569
+      RedChicken_7: -3833827947904991576
+      RedChicken_8: 3999495864051598415
+      RedChicken_9: -546845170324375906
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

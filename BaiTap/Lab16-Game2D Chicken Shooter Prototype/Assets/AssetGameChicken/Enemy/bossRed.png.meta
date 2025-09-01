@@ -335,7 +335,15 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      bossRed_0: -2097574655511661036
+      bossRed_1: -8658772103008811849
+      bossRed_2: 5017883144432070903
+      bossRed_3: -9059046070756708445
+      bossRed_4: -4985625220009839764
+      bossRed_5: 1646270212368083831
+      bossRed_6: -1928968310389647829
+      bossRed_7: 1354744396973686060
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
