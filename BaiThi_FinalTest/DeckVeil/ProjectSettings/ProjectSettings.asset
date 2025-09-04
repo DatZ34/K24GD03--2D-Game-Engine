@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 28
-  productGUID: fe26c00c6606a2b488d0b041df0d899f
+  productGUID: 43fa6c8fa29aa4c488c1fefef1a40ba5
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: Lab16-Game2D Chicken Shooter Prototype
+  productName: DeckVeil
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -400,10 +400,7 @@ PlayerSettings:
   m_BuildTargetGroupLightmapSettings: []
   m_BuildTargetGroupLoadStoreDebugModeSettings: []
   m_BuildTargetNormalMapEncoding: []
-  m_BuildTargetDefaultTextureCompressionFormat:
-  - serializedVersion: 3
-    m_BuildTarget: WebGL
-    m_Formats: 05000000
+  m_BuildTargetDefaultTextureCompressionFormat: []
   playModeTestRunnerEnabled: 0
   runPlayModeTestAsEditModeTest: 0
   actionOnDotNetUnhandledException: 1
@@ -690,14 +687,14 @@ PlayerSettings:
   editorAssembliesCompatibilityLevel: 1
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: Lab16-Game2D Chicken Shooter Prototype
+  metroPackageName: DeckVeil
   metroPackageVersion: 
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
   metroCertificateIssuer: 
   metroCertificateNotAfter: 0000000000000000
-  metroApplicationDescription: Lab16-Game2D Chicken Shooter Prototype
+  metroApplicationDescription: DeckVeil
   wsaImages: {}
   metroTileShortName: 
   metroTileShowName: 0
@@ -768,10 +765,10 @@ PlayerSettings:
   captureStartupLogs: {}
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: cfb72f3a-9390-4c5e-bd05-ea8035d267fd
+  cloudProjectId: 8ad5a963-8c7a-41d9-9ca3-ffd3180df097
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: Lab16-Game2D Chicken Shooter Prototype
+  projectName: DeckVeil
   organizationId: vothanhdat4265
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
