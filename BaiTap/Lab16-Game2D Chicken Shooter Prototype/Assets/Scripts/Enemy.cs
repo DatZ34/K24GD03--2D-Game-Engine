@@ -75,7 +75,7 @@ public class Enemy : MonoBehaviour
 
     #endregion
     #region attack
-    protected virtual void Shoot() { }
+    public virtual void Shoot() { }
     protected virtual void StartAttack() { }
     protected virtual void StopAttack() { }
     #endregion

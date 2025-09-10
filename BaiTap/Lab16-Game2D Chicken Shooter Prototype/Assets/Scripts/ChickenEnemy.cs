@@ -33,4 +33,9 @@ public class ChickenEnemy : Enemy
         base.MovePattern();
 
     }
+    public  override void Shoot()
+    {
+        GameObject egg = Instantiate(eggPrefab, transform.position, Quaternion.identity, gameObject.transform);
+        egg.transform.localScale = new Vector2(10f, 10f);
+    }
 }

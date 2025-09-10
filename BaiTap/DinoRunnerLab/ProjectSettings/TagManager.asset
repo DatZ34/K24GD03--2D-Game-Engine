@@ -7,6 +7,8 @@ TagManager:
   - Coin
   - Tree
   - Ground
+  - Flatform
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -43,6 +45,21 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: BackGround
+    uniqueID: 2141051007
+    locked: 0
+  - name: Ground
+    uniqueID: 2959792675
+    locked: 0
+  - name: Flatform
+    uniqueID: 109743415
+    locked: 0
+  - name: Player
+    uniqueID: 891603997
+    locked: 0
+  - name: enemy
+    uniqueID: 2551002465
     locked: 0
   m_RenderingLayers:
   - Default

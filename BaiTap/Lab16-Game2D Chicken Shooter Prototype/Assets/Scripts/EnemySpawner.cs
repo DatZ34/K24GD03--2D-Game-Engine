@@ -29,6 +29,8 @@ public class EnemySpawner : MonoBehaviour
     void Start()
     {
         DictionSaveObject = new Dictionary<int, Transform>();
+        InvokeRepeating("RandomShootEgg", 3, 5);
+
     }
 
     // Update is called once per frame
@@ -174,6 +176,7 @@ public class EnemySpawner : MonoBehaviour
             case 1:
                 isSpawn1Line = true;
                 SpawnEnemy(); // hàng đơn
+
                 break;
             case 2:
                 isSpawn1Line = false;
@@ -190,5 +193,16 @@ public class EnemySpawner : MonoBehaviour
 
         yield return new WaitForSeconds(spawnInterval);
         isSpawning = false;
+    }
+    void RandomShootEgg()
+    {
+        if(spawnContainer != null)
+        {
+            foreach(Transform child in spawnContainer)
+            {
+                Enemy enemy = child.GetComponent<Enemy>();
+                enemy.Shoot();
+            }
+        }
     }
 }

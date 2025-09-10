@@ -13,4 +13,14 @@ public class Coin : MonoBehaviour
     {
         
     }
+<<<<<<< HEAD
+=======
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Destroy(gameObject);
+        }
+    }
+>>>>>>> c205ac635a9db72025274cd06e36e72980917165
 }

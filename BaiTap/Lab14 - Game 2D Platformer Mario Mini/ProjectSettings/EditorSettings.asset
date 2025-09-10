@@ -25,7 +25,11 @@ EditorSettings:
   m_AsyncShaderCompilation: 1
   m_PrefabModeAllowAutoSave: 1
   m_EnterPlayModeOptionsEnabled: 1
+<<<<<<< HEAD
   m_EnterPlayModeOptions: 0
+=======
+  m_EnterPlayModeOptions: 1
+>>>>>>> c205ac635a9db72025274cd06e36e72980917165
   m_GameObjectNamingDigits: 1
   m_GameObjectNamingScheme: 0
   m_AssetNamingUsesSpace: 1
