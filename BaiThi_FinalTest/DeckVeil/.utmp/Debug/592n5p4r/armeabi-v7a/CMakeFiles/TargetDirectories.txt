@@ -1,0 +1,8 @@
+D:/Game Engine 2d/BaiThi_FinalTest/DeckVeil/.utmp/Debug/592n5p4r/armeabi-v7a/CMakeFiles/edit_cache.dir
+D:/Game Engine 2d/BaiThi_FinalTest/DeckVeil/.utmp/Debug/592n5p4r/armeabi-v7a/CMakeFiles/rebuild_cache.dir
+D:/Game Engine 2d/BaiThi_FinalTest/DeckVeil/.utmp/Debug/592n5p4r/armeabi-v7a/GameActivity/CMakeFiles/game.dir
+D:/Game Engine 2d/BaiThi_FinalTest/DeckVeil/.utmp/Debug/592n5p4r/armeabi-v7a/GameActivity/CMakeFiles/edit_cache.dir
+D:/Game Engine 2d/BaiThi_FinalTest/DeckVeil/.utmp/Debug/592n5p4r/armeabi-v7a/GameActivity/CMakeFiles/rebuild_cache.dir
+D:/Game Engine 2d/BaiThi_FinalTest/DeckVeil/.utmp/Debug/592n5p4r/armeabi-v7a/FramePacing/CMakeFiles/swappywrapper.dir
+D:/Game Engine 2d/BaiThi_FinalTest/DeckVeil/.utmp/Debug/592n5p4r/armeabi-v7a/FramePacing/CMakeFiles/edit_cache.dir
+D:/Game Engine 2d/BaiThi_FinalTest/DeckVeil/.utmp/Debug/592n5p4r/armeabi-v7a/FramePacing/CMakeFiles/rebuild_cache.dir
