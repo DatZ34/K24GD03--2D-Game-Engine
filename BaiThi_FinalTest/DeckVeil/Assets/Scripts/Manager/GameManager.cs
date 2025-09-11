@@ -12,11 +12,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] private List<GameObject> handCards = new List<GameObject>(); // số card hiện trên tay
     [Header("UI Controls")]
     [SerializeField] private Button playCard;
+    [SerializeField] private Button withdrawCard;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         DrawStartingHand();
         playCard.onClick.AddListener(PlayCard);
+        withdrawCard.onClick.AddListener(WithdrawCard);
     }
 
     // Update is called once per frame

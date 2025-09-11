@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 public class GridController : MonoBehaviour
@@ -76,6 +77,8 @@ public class GridController : MonoBehaviour
         path.Reverse();
         return path;
     }
+
+
     public void ClearMap(Tilemap map)
     {
         map.ClearAllTiles();
