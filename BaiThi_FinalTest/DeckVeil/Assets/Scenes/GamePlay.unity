@@ -2576,6 +2576,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 608253044f78e89428f70581c38d2898, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ZoneIndexRange: 0
+  moveRange: 0
   speed: 5
   heath: 100
   dame: 5
@@ -2585,12 +2587,17 @@ MonoBehaviour:
   normalEnemy: 0
   eliteEnemy: 0
   bossEnemy: 0
+  targetPos: {fileID: 0}
   isMoving: 0
   enemyTurn: 0
+  playerDetected: 0
   path: []
   currentPathIndex: 0
   rb: {fileID: 1983518289}
-  bx: {fileID: 0}
+  bx: {fileID: 488857659}
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 128
   gridCL: {fileID: 778459797}
 --- !u!1 &2111890980
 GameObject:
