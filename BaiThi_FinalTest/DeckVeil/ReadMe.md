@@ -1,4 +1,4 @@
-# BattleGrid
+<img width="1753" height="811" alt="image" src="https://github.com/user-attachments/assets/c9dfa745-22d3-4737-8814-108cf03d0756" /><img width="1753" height="811" alt="image" src="https://github.com/user-attachments/assets/9f638499-5d40-4f23-a704-54fa21468b24" /># BattleGrid
 
 ## 🎮 Thể loại
 Game chiến thuật **Turn-Based** kết hợp **thẻ bài (Card System)** trên bàn cờ 5x5.
@@ -26,8 +26,10 @@ Game chiến thuật **Turn-Based** kết hợp **thẻ bài (Card System)** tr�
 - ⏳ Sắp tới: UI quản lý thẻ, nhiều loại Enemy khác nhau.  
 
 ## 📷 Screenshot
-- ![Gameplay](c:\Users\AD\Downloads\gameplay.jpg)  
-- ![Pause](c:\Users\AD\Downloads\pause.jpg)  
-- ![MainMenu](c:\Users\AD\Downloads\mainMenu.jpg)  
-- ![Win](c:\Users\AD\Downloads\win.jpg)  
-- ![Lose](c:\Users\AD\Downloads\lose.jpg)  
+
+- ![Gameplay] <img width="1753" height="811" alt="image" src="https://github.com/user-attachments/assets/1bbaf228-a60c-4060-bdf8-601db93916ef" />
+- ![Pause]<img width="1042" height="765" alt="image" src="https://github.com/user-attachments/assets/fe757f7a-f247-4dd0-be78-917648af0ce1" />
+- ![MainMenu]<img width="1049" height="767" alt="image" src="https://github.com/user-attachments/assets/61719309-c2f1-4b42-b9ae-4f3f4401a509" />
+- ![Win]<img width="1046" height="776" alt="image" src="https://github.com/user-attachments/assets/95b8bd11-d19a-469b-981e-cb865e14eb7c" />
+- ![Lose]<img width="1045" height="769" alt="image" src="https://github.com/user-attachments/assets/a2c359e5-c979-4905-9a68-cd6980822f13" />
+
