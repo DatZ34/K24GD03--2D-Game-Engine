@@ -1,14 +1,20 @@
-﻿using UnityEngine;
-using UnityEngine.Tilemaps;
+﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class CharacterBase : MonoBehaviour
 {
     [Header("Status")]
     [SerializeField] protected float speed = 5;
-    
+
+    public int hp;
+    public int mana;
+    public int damage;
+    public bool canMove;
+    public bool canAttack;
     [Header("Running data")]
-    
+    public bool PlayerTurn;
     [SerializeField] protected bool hasMoving;
     [SerializeField] protected float horizontal;
     [SerializeField] protected float vertical;
@@ -20,28 +26,38 @@ public class CharacterBase : MonoBehaviour
     [SerializeField] protected Rigidbody2D rb;
 
     [Header("Class Add")]
-    [SerializeField] protected GridController grilCtl;
+    [SerializeField] public GridController grilCtl;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected virtual void Start()
     {
-        
+        CombatManager.Instance.RegisterPlayer(this);
+
     }
 
     // Update is called once per frame
     protected virtual void Update()
     {
         MoveWASD();
+
     }
     protected virtual void FixedUpdate()
     {
-        if (isDeckMove)
+        if (PlayerTurn)
         {
-            UseDeckMoveClick();
+            if (canMove)
+            {
+                if (isDeckMove)
+                {
+                    UseDeckMoveClick();
+                }
+                if (isNormalMove)
+                {
+                    NormalMove();
+                }
+            }
         }
-        if (isNormalMove)
-        {
-            NormalMove();
-        }
+        ShowZone();
+
     }
     protected virtual void MoveWASD()
     {
@@ -106,11 +122,37 @@ public class CharacterBase : MonoBehaviour
                 if(currentPathIndex >= path.Count)
                 {
                     hasMoving = false;
+                    canMove = false;
+                    if(CheckAutoAttack()) isDeckMove = false;
+
                 }
             }
         }
 
+
     }
+    protected virtual void ShowZone()
+    {
+        Vector3Int startCell = grilCtl.GroundMap.WorldToCell(rb.position);
+        grilCtl.HightLightZonePlayer8Dir(startCell);
+    }
+    protected virtual bool CheckAutoAttack()
+    {
+        Vector3Int startCell = grilCtl.GroundMap.WorldToCell(rb.position);
+        if (grilCtl.zoneEnemyMap.HasTile(startCell) && path.Count != 0)
+        {
+            rb.position = path[path.Count - 1];
+            if (!canAttack)
+            {
+                AutoAttack();
+                canAttack = true;
+                canMove = false;
+            }
+            return true; // báo đã xử lý
+        }
+        return false;
+    }
+
     protected virtual void NormalMove()
     {
         Vector3Int startCell = grilCtl.GroundMap.WorldToCell(rb.position);
@@ -118,6 +160,7 @@ public class CharacterBase : MonoBehaviour
         {
             grilCtl.HightLightMove(startCell, 1);
         }
+
         Vector3? inputTargetWorldPos = null;
         if (Input.GetMouseButtonDown(0))
         {
@@ -159,8 +202,55 @@ public class CharacterBase : MonoBehaviour
             {
                 currentPathIndex++;
                 hasMoving = false;
+                canMove = false;
+                if (CheckAutoAttack()) isNormalMove = true;
+
             }
         }
     }
+    public void TakeDamage(int dmg)
+    {
+        hp -= dmg;
+        if (hp <= 0)
+        {
+            Die();
+        }
+        Debug.Log("HP: " + hp);
+    }
 
+    protected virtual void Die()
+    {
+        CombatManager.Instance.UnregisterPlayer(this);
+        Destroy(gameObject);
+    }
+    public void Attack(EnemyBase target)
+    {
+        Debug.Log("target: " + target);
+        CombatManager.Instance.DealDamageEnemy(target, damage);
+    }
+    public EnemyBase FindClosestEnemy()
+    {
+        EnemyBase closest = null;
+        float minDist = Mathf.Infinity;
+
+        foreach (var enemy in CombatManager.Instance.GetEnemies())
+        {
+            float dist = Vector3.Distance(transform.position, enemy.transform.position);
+            if (dist < minDist)
+            {
+                minDist = dist;
+                closest = enemy;
+            }
+        }
+        return closest;
+    }
+
+    public void AutoAttack()
+    {
+        EnemyBase target = FindClosestEnemy();
+        if (target != null)
+        {
+            Attack(target);
+        }
+    }
 }

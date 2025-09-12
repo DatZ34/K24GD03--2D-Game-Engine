@@ -6,6 +6,9 @@ public class GridController : MonoBehaviour
 {
     public Tilemap GroundMap;
     public Tilemap highlightMap;
+    public Tilemap zoneEnemyMap;
+    public Tilemap zonePlayerMap;
+
     public Tile highlightTile;
     public Camera mainCam;
     private Vector3Int[] directions = new Vector3Int[]
@@ -22,6 +25,17 @@ public class GridController : MonoBehaviour
         new Vector3Int(1,1,0),
         new Vector3Int(-1,-1,0)
     };
+    private Vector3Int[] direction8 = new Vector3Int[]
+{
+        new Vector3Int(1,0, 0),
+        new Vector3Int(-1,0, 0),
+        new Vector3Int(0,1,0),
+        new Vector3Int(0,-1,0),
+        new Vector3Int(1,-1, 0),
+        new Vector3Int(-1,1, 0),
+        new Vector3Int(1,1,0),
+        new Vector3Int(-1,-1,0)
+};
     // biến dùng để bắt Screen màn hình
     [SerializeField] private float scaleFactor = 1.2f;
     [SerializeField] private float yOffset = 2f;
@@ -117,6 +131,36 @@ public class GridController : MonoBehaviour
                 if (GroundMap.HasTile(nextCell))
                 {
                     highlightMap.SetTile(nextCell, highlightTile);
+                }
+            }
+        }
+    }
+    public void HightLightZoneEnemy8Dir(Vector3Int startcell, int range = 1) // Show 4 hướng theo range(phạm vi di chuyển)
+    {
+        ClearMap(zoneEnemyMap);
+        foreach(var dir in direction8)
+        {
+            for(int i =1; i <= range; i++)
+            {
+                Vector3Int nextCell = startcell + dir * i;
+                if (GroundMap.HasTile(nextCell))
+                {
+                    zoneEnemyMap.SetTile(nextCell, highlightTile);
+                }
+            }
+        }
+    }
+    public void HightLightZonePlayer8Dir(Vector3Int startcell, int range = 1) // Show 4 hướng theo range(phạm vi di chuyển)
+    {
+        ClearMap(zonePlayerMap);
+        foreach(var dir in direction8)
+        {
+            for(int i =1; i <= range; i++)
+            {
+                Vector3Int nextCell = startcell + dir * i;
+                if (GroundMap.HasTile(nextCell))
+                {
+                    zonePlayerMap.SetTile(nextCell, highlightTile);
                 }
             }
         }

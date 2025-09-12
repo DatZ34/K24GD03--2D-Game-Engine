@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Tilemaps;
 public class GameManager : MonoBehaviour
 {
     [Header("Deck Settings")]
@@ -13,9 +14,29 @@ public class GameManager : MonoBehaviour
     [Header("UI Controls")]
     [SerializeField] private Button playCard;
     [SerializeField] private Button withdrawCard;
+    [SerializeField] private LevelMapManager gateLevel;
+    [Header("Prefabs")]
+    [SerializeField] private GameObject mainPlayer;
+    [SerializeField] private GameObject enemyNormal;
+    [SerializeField] private GameObject eliteEnemy;
+    [Header("Container")]
+    [SerializeField] private Transform heart;
+    [SerializeField] private Transform mana;
+    [Header("class add")]
+    [SerializeField] private GridController gridCL;
+
+    private GameObject playerInstance;
+    private GameObject enemyInstance;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private void Awake()
+    {
+        gateLevel.LoadLevel(0);
+
+    }
     void Start()
     {
+        SpawnPlayerAndEnemy();
         DrawStartingHand();
         playCard.onClick.AddListener(PlayCard);
         withdrawCard.onClick.AddListener(WithdrawCard);
@@ -24,8 +45,64 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        checkTurnEnemy();
     }
+    public void SpawnPlayerAndEnemy()
+    {
+        // Lấy bounds tổng quát của tilemap
+        BoundsInt bounds = gridCL.GroundMap.cellBounds;
+
+        // Biến lưu tọa độ thực sự có tile
+        Vector3Int bottomLeftCell = Vector3Int.zero;
+        Vector3Int topRightCell = Vector3Int.zero;
+
+        bool foundBottomLeft = false;
+        bool foundTopRight = false;
+
+        // Duyệt toàn bộ bounds, tìm ô có tile
+        foreach (var pos in bounds.allPositionsWithin)
+        {
+            if (gridCL.GroundMap.HasTile(pos))
+            {
+                // Lưu ô trái dưới
+                if (!foundBottomLeft || pos.x <= bottomLeftCell.x && pos.y <= bottomLeftCell.y)
+                {
+                    bottomLeftCell = pos;
+                    foundBottomLeft = true;
+                }
+
+                // Lưu ô phải trên
+                if (!foundTopRight || pos.x >= topRightCell.x && pos.y >= topRightCell.y)
+                {
+                    topRightCell = pos;
+                    foundTopRight = true;
+                }
+            }
+        }
+
+        // Convert ra world position
+        Vector3 bottomLeftWorld = gridCL.GroundMap.GetCellCenterWorld(bottomLeftCell);
+        Vector3 topRightWorld = gridCL.GroundMap.GetCellCenterWorld(topRightCell);
+
+        // Spawn player tại góc dưới trái
+        if (playerInstance == null)
+            playerInstance = Instantiate(mainPlayer, bottomLeftWorld, Quaternion.identity);
+        var character = playerInstance.GetComponent<CharacterBase>();
+        if (character != null)
+        {
+            character.grilCtl = gridCL;
+            character.PlayerTurn = true;
+        }
+        // Spawn enemy tại góc trên phải
+        if (enemyInstance == null)
+            enemyInstance = Instantiate(enemyNormal, topRightWorld, Quaternion.identity);
+        var enemy = enemyInstance.GetComponent<EnemyBase>();
+        if (enemy != null) 
+        { 
+            enemy.gridCL = gridCL;
+        }
+    }
+
     public void DrawStartingHand()
     {
         for(int i = 0;i < startHandSize;i++)
@@ -81,5 +158,40 @@ public class GameManager : MonoBehaviour
         {
             handcard.Remove(card);
         }
+    }
+    public void EndTurn()
+    {
+        if (enemyInstance != null && enemyInstance != null)
+        {
+            CharacterBase player = playerInstance.GetComponent<CharacterBase>();
+            EnemyBase enemy = enemyInstance.GetComponent<EnemyBase>();
+            if (!enemy.enemyTurn && player.PlayerTurn)
+            {
+                player.PlayerTurn = false;
+
+                enemy.enemyTurn = true;
+                enemy.canMove = true;
+                enemy.attack = false;
+
+            }
+        }
+    }
+    void checkTurnEnemy()
+    {
+        EnemyBase enemy;
+        CharacterBase player;
+        if (enemyInstance != null && enemyInstance != null)
+        {     
+            player = playerInstance.GetComponent<CharacterBase>();
+            enemy = enemyInstance.GetComponent<EnemyBase>();
+            if (!enemy.enemyTurn)
+            {
+                player.PlayerTurn = true;
+                player.canMove = true;
+                player.canAttack = false;
+                enemy.enemyTurn = false;
+            }
+        }
+
     }
 }
