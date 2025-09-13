@@ -19,7 +19,7 @@ public class EnemyBase : MonoBehaviour
     [SerializeField] protected bool bossEnemy;
     [Header("Running status")]
     [SerializeField] protected Vector3Int currentTargetPlayerPos;
-    [SerializeField] protected Transform targetPos;
+    [SerializeField] protected GameObject targetPos;
     public bool isMoving;
     public bool enemyTurn;
     public bool playerDetected;
@@ -61,16 +61,23 @@ public class EnemyBase : MonoBehaviour
     {
         if (enemyTurn)
         {
-            ZoneCheck(); // kiểm tra trước khi hành động
-
-            if (playerDetected && targetPos != null)
+            if (!isMoving)
             {
-                ChasePlayer(gridCL.GroundMap.WorldToCell(targetPos.position), moveRange);
+                ZoneCheck(); // kiểm tra trước khi hành động
+            }
+            if (playerDetected && targetPos != null && !isMoving)
+            {
+
+                Debug.Log("[update]: ChasePlayer");
+                ChasePlayer(gridCL.GroundMap.WorldToCell(targetPos.transform.position), moveRange);
             }
             else
             {
+                Debug.Log("[update]: MoveRandom()");
                 MoveRandom();
             }
+            Debug.Log("[update]: playerDetected : " + playerDetected);
+
         }
 
         ShowZone(); // hiển thị vùng zone
@@ -120,18 +127,32 @@ public class EnemyBase : MonoBehaviour
 
         if (canMove)
         {
+            Debug.Log("[ChasePlayer] : đuổi theo player");
             // Kiểm tra có player cạnh bên không
             Vector3Int startCell = gridCL.GroundMap.WorldToCell(rb.position);
+            if (CheckAutoAttack(startCell)) return;
 
+            playerCell.z = 0; // đảm bảo đúng layer
+
+            if (!gridCL.GroundMap.HasTile(playerCell))
+            {
+                Debug.LogWarning("Không có tile tại vị trí playerCell: " + playerCell);
+                return; // hoặc xử lý fallback
+            }
             if (gridCL.GroundMap.HasTile(startCell) && gridCL.GroundMap.HasTile(playerCell) && !isMoving)
             {
+                Debug.Log("[ChasePlayer] : check startcell");
+
                 if (currentTargetPlayerPos != null || currentTargetPlayerPos != playerCell)
                 {
+
                     currentTargetPlayerPos = playerCell;
                     // Tìm path
                     path = gridCL.FindPath(startCell, playerCell);
+                    Debug.Log("[ChasePlayer] : lấy path mới.");
+
                 }
-                    if (path.Count > 0)
+                if (path.Count > 0)
                     {
                         currentPathIndex = 0;
                         isMoving = true;
@@ -140,54 +161,43 @@ public class EnemyBase : MonoBehaviour
             }
             if (isMoving && path != null && currentPathIndex < path.Count)
             {
+                Debug.Log("[ChasePlayer] : tiến hành di chuyển.");
+
                 Vector3 target = path[currentPathIndex];
                 rb.position = Vector2.MoveTowards(rb.position, target, speed * Time.fixedDeltaTime);
-                if (Vector2.Distance(rb.position, target) < 0.2f)
+                Vector3Int newStartCell = gridCL.GroundMap.WorldToCell(target);
+                if (CheckAutoAttack(newStartCell))
                 {
-                    
-                    // Nếu chưa đạt số bước tối đa thì tiến sang bước kế
-                    if (currentPathIndex < moveRange - 1)
-                    {
-                        currentPathIndex++;
-                    }
-                    else
-                    {
-                         // Đã hoàn thành lượt di chuyển
-                        isMoving = false;
-                        canMove = false;
-
-                        enemyTurn = false;
-
-                        currentPathIndex = 0;
-                    }
+                    Debug.Log("[ChasePlayer] : đã vào CheckAutoAttack.");
                 }
-            }
-            // Kiểm tra ô hiện tại có tile trên zonePlayerMap không
-            if (gridCL.zonePlayerMap.HasTile(startCell))
-            {
-                rb.position = path[0];
-                // Nếu đã đi hết path
-                isMoving = false;
-                canMove = false;
 
-                if (!attack) // chỉ tấn công một lần
-                {
-                    AutoAttack();
-                    attack = true; // đánh dấu đã tấn công
-                }
-                currentPathIndex = 0;
-
-                return;
             }
+
         }
 
     }
 
-
-
-    public virtual void Attack()
+    bool CheckAutoAttack(Vector3Int startCell)
     {
+        if (gridCL.zonePlayerMap.HasTile(startCell))
+        {
+            Debug.Log("[ChasePlayer] : đã đứng cạnh player.");
 
+            rb.position = path[0];
+
+            if (!attack) // chỉ tấn công một lần
+            {
+                isMoving = false;
+                canMove = false;
+
+                enemyTurn = false;
+                Debug.Log("[CheckAutoAttack] : đã vào if(attack)");
+                AutoAttack();
+                attack = true; // đánh dấu đã tấn công
+            }
+            return true;
+        }
+        return false;
     }
     public virtual void ZoneCheck() // Vẫn còn bug bị nở Hướng Vevtor.Down range + 1
     {
@@ -201,11 +211,11 @@ public class EnemyBase : MonoBehaviour
                 if (gridCL.GroundMap.HasTile(checkCell))
                 {
                     Vector3 worldPosCheck = gridCL.GroundMap.GetCellCenterWorld(checkCell);
-                    Collider2D hit = Physics2D.OverlapPoint(worldPosCheck, playerLayer);
+                    Collider2D hit = Physics2D.OverlapPoint(worldPosCheck,playerLayer);
                     if (hit != null && hit.CompareTag("Player"))
                     {
                         playerDetected = true;
-                        targetPos = hit.transform;
+                        targetPos = hit.gameObject;
                         return;
                     }
 
@@ -230,6 +240,7 @@ public class EnemyBase : MonoBehaviour
     {
         CombatManager.Instance.UnregisterEnemy(this);
         Destroy(gameObject);
+        CombatManager.Instance.CheckEnemyLive();
     }
     public void Attack(CharacterBase target)
     {
@@ -257,6 +268,8 @@ public class EnemyBase : MonoBehaviour
 
     public void AutoAttack()
     {
+        Debug.Log("[AutoAttack] : thực hiện");
+
         CharacterBase target = FindClosestplayer();
         if (target != null)
         {

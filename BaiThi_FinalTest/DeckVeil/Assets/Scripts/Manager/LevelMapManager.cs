@@ -27,6 +27,10 @@ public class LevelMapManager : MonoBehaviour
 
             // Gán Tilemap vào GridController
             g.GroundMap = groundTilemap;
+            if (CombatManager.Instance != null)
+            {
+                CombatManager.Instance.isGameStillPlay = true;
+            }
         }
         else
         {

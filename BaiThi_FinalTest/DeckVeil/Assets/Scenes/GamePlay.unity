@@ -422,6 +422,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b09c355d8cc9c804d874080a553d0983, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isGameStillPlay: 1
+  win_panel: {fileID: 39896618}
+  lose_panel: {fileID: 1192408966}
 --- !u!1 &134539332
 GameObject:
   m_ObjectHideFlags: 0

@@ -45,7 +45,10 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        checkTurnEnemy();
+        if (CombatManager.Instance.isGameStillPlay)
+        {
+            checkTurnEnemy();
+        }
     }
     public void SpawnPlayerAndEnemy()
     {
@@ -92,6 +95,8 @@ public class GameManager : MonoBehaviour
         {
             character.grilCtl = gridCL;
             character.PlayerTurn = true;
+            character.canMove = true;
+            character.canAttack = false; // chỉ có false thì player mới tự động đánh
         }
         // Spawn enemy tại góc trên phải
         if (enemyInstance == null)
@@ -100,6 +105,9 @@ public class GameManager : MonoBehaviour
         if (enemy != null) 
         { 
             enemy.gridCL = gridCL;
+            enemy.enemyTurn = false;
+            enemy.canMove = false;
+            enemy.attack = true; // giống với player
         }
     }
 
@@ -184,7 +192,7 @@ public class GameManager : MonoBehaviour
         {     
             player = playerInstance.GetComponent<CharacterBase>();
             enemy = enemyInstance.GetComponent<EnemyBase>();
-            if (!enemy.enemyTurn)
+            if (!enemy.enemyTurn && !enemy.canMove && !player.PlayerTurn)
             {
                 player.PlayerTurn = true;
                 player.canMove = true;

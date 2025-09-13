@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 public class CombatManager : MonoBehaviour
 {
+    public bool isGameStillPlay;
+
+    public GameObject win_panel;
+    public GameObject lose_panel;
     public static CombatManager Instance;
     private List<EnemyBase> enemies = new List<EnemyBase>();
     private List<CharacterBase> player = new List<CharacterBase>();
@@ -79,5 +83,25 @@ public class CombatManager : MonoBehaviour
     {
         return player;
     }
+    public void CheckEnemyLive()
+    {
+        if (enemies.Count != 0) return;
+        else
+        {
+            isGameStillPlay = false;
+            Time.timeScale = 0;
+            win_panel.gameObject.SetActive(true);
+        }
+    }
+    public void CheckPlayerLive()
+    {
+        if (player.Count != 0) return;
+        else
+        {
+            Time.timeScale = 0;
+            isGameStillPlay = false;
+            lose_panel.gameObject.SetActive(true);
 
+        }
+    }
 }

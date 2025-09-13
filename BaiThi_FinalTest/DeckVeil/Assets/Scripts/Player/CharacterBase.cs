@@ -222,6 +222,7 @@ public class CharacterBase : MonoBehaviour
     {
         CombatManager.Instance.UnregisterPlayer(this);
         Destroy(gameObject);
+        CombatManager.Instance.CheckPlayerLive();
     }
     public void Attack(EnemyBase target)
     {
