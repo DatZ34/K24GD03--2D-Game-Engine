@@ -198,10 +198,16 @@ public class EnemySpawner : MonoBehaviour
     {
         if(spawnContainer != null)
         {
-            foreach(Transform child in spawnContainer)
+            if(spawnContainer != null && spawnContainer.childCount > 0)
             {
-                Enemy enemy = child.GetComponent<Enemy>();
-                enemy.Shoot();
+                int randomIndex = Random.Range(0,spawnContainer.childCount);    
+                Transform randomChild = spawnContainer.GetChild(randomIndex);
+
+                Enemy enemy = randomChild.GetComponent<Enemy>();
+                if(enemy != null)
+                {
+                    enemy.Shoot();
+                }
             }
         }
     }

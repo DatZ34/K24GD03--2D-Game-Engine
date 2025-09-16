@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         source = GetComponent<AudioSource>();
+        //source.volume = AudioManager.instance.currentValueSoundEFX;
     }
     private void FixedUpdate()
     {
