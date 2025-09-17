@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8446472263729008251}
   - component: {fileID: 1867547000234210961}
   - component: {fileID: 6097206836017307566}
+  - component: {fileID: 6061526274729155613}
   m_Layer: 0
   m_Name: leg_Chicken
   m_TagString: Untagged
@@ -101,11 +102,11 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0
+  m_Mass: 0.5
+  m_LinearDamping: 0.2
   m_AngularDamping: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 239ad9f00e5441e4e907bd669bb31446, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -153,3 +154,17 @@ CapsuleCollider2D:
   m_Offset: {x: -0.025250241, y: -0.016973019}
   m_Size: {x: 1.1330411, y: 1.9701052}
   m_Direction: 0
+--- !u!114 &6061526274729155613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3659998549624795770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eeaacd4ff96c77f4e879818fa057d6cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  point: 10
+  rb: {fileID: 1867547000234210961}

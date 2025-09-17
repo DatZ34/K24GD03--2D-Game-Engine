@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      btn_bg_oringe_0: -2717797502984918059
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

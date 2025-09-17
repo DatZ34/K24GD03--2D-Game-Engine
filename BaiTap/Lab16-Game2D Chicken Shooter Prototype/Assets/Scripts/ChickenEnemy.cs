@@ -1,5 +1,4 @@
-using Unity.VisualScripting;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ChickenEnemy : Enemy
 {
@@ -8,8 +7,11 @@ public class ChickenEnemy : Enemy
     {
         MovePattern();
     }
-    protected override void OnCollisionEnter2D(Collision2D collision)
+    protected override void OnTriggerEnter2D(Collider2D collision)
     {
+        base.OnTriggerEnter2D(collision);
+        //Debug.Log("Va chạm với: " + collision.gameObject.name);
+
         if (collision.gameObject.CompareTag("platform"))
         {
             Destroy(gameObject);
@@ -37,5 +39,21 @@ public class ChickenEnemy : Enemy
     {
         GameObject egg = Instantiate(eggPrefab, transform.position, Quaternion.identity, gameObject.transform);
         egg.transform.localScale = new Vector2(3f, 3f);
+        HasShoot = true;
+    }
+    public override void DropLeg()
+    {
+        int randomIndex = Random.Range(1, 2);
+        for (int i = 0; i < randomIndex; i++)
+        {
+            GameObject leg = Instantiate(legPrefab, transform.position, Quaternion.identity);
+        }
+
+    }
+    protected override void Die()
+    {
+        DropLeg();
+        base.Die();
+
     }
 }

@@ -304,6 +304,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  point: 0
   bulletContainer: {fileID: 4360020582249569924}
   firePoint: {fileID: 4526578211026417083}
   bulletsA:
@@ -319,7 +320,7 @@ MonoBehaviour:
   bulletRayCount: 1
   currentBullet: 0
   canShoot: 1
-  shootEffectPrefab: {fileID: 0}
+  shootEffectPrefab: {fileID: 7807543189541850075, guid: d3b32cd89c8572b45afa54fe021e0c42, type: 3}
   explosionPrefab: {fileID: 139366, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
   shootSound: {fileID: 8300000, guid: ddc05e50c573cbc41be666990b67f853, type: 3}
   exploSound: {fileID: 8300000, guid: 6796015fa0479bb4e8a25e5450e4d6d5, type: 3}

@@ -8,6 +8,7 @@ TagManager:
   - bullet
   - BackGround
   - platform
+  - Shield
   layers:
   - Default
   - TransparentFX

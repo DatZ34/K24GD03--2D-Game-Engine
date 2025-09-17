@@ -168,7 +168,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1950391536001618529}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -204,6 +204,7 @@ MonoBehaviour:
   attackRate: 0.8
   damage: 50
   ScoreValue: 10
+  HasShoot: 0
   isBoss: 0
   flyPattern: 0
   dropRate: 0
@@ -212,6 +213,7 @@ MonoBehaviour:
   deathEffectPrefab: {fileID: 1895255649848414122, guid: 76d5a70b51c72d54dacf45d65bf707b9, type: 3}
   eggPrefab: {fileID: 4930898924111501984, guid: 1620d8056ac1fce4aa0815ac9cd93dd7, type: 3}
   legPrefab: {fileID: 3659998549624795770, guid: 5d02e78d54b517f4590fbf9f8df53c83, type: 3}
+  presentPrefab: {fileID: 2368427390343747690, guid: 01ec1918e6d3aba43994ce7068c058cb, type: 3}
   hitScale: {x: -0.1, y: -0.1, z: 0}
   deathScale: {x: 1, y: 1, z: 0}
   eggScale: {x: 0, y: 0, z: 0}

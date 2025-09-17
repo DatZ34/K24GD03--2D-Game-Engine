@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      enegy_bg_0: 2541764020684719345
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

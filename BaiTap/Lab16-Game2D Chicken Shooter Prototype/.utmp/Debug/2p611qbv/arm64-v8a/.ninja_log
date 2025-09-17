@@ -1,12 +1,23 @@
 # ninja log v5
-267	2037	7796278284870021	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	9308a46981a6c8e
-2040	2755	7796278291618290	D:/Game Engine 2d/BaiTap/Lab16-Game2D Chicken Shooter Prototype/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/Debug/2p611qbv/obj/arm64-v8a/libswappywrapper.so	b58e39782bff14b5
-72	5018	7796278314765542	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	1a42ac374d9b4bbd
-103	5040	7796278314765542	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	5dfe3f8c87981fa6
-245	5102	7796278315119894	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	a2fbe75e11629d44
-35	5186	7796278315321206	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	2cced60cc342d15f
-18	5215	7796278315861384	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	ef73373afbc926f3
-53	5441	7796278319188831	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	f347a0c3cd3f267f
-2	5527	7796278319998578	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	1015732108b4a54c
-135	5578	7796278320583394	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	8439a212f4ec5032
-5579	5761	7796278322410075	D:/Game Engine 2d/BaiTap/Lab16-Game2D Chicken Shooter Prototype/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/Debug/2p611qbv/obj/arm64-v8a/libgame.so	b4bf7f3a30e27d0c
+195	1206	7798131629627915	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	9308a46981a6c8e
+32	4837	7798131666087610	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	1015732108b4a54c
+1207	1866	7798131635318653	D:/Game Engine 2d/BaiTap/Lab16-Game2D Chicken Shooter Prototype/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/Debug/2p611qbv/obj/arm64-v8a/libswappywrapper.so	b58e39782bff14b5
+116	4370	7798131661060792	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	1a42ac374d9b4bbd
+74	4375	7798131661085968	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	5dfe3f8c87981fa6
+159	4425	7798131661981481	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	a2fbe75e11629d44
+99	4496	7798131662738264	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	ef73373afbc926f3
+47	4352	7798131660979953	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	2cced60cc342d15f
+140	4748	7798131665066563	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	f347a0c3cd3f267f
+178	4813	7798131665930481	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	8439a212f4ec5032
+4837	5051	7798131668295385	D:/Game Engine 2d/BaiTap/Lab16-Game2D Chicken Shooter Prototype/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/Debug/2p611qbv/obj/arm64-v8a/libgame.so	b4bf7f3a30e27d0c
+189	1414	7798142802346436	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	9308a46981a6c8e
+1415	2192	7798142810010841	D:/Game Engine 2d/BaiTap/Lab16-Game2D Chicken Shooter Prototype/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/Debug/2p611qbv/obj/arm64-v8a/libswappywrapper.so	b58e39782bff14b5
+48	4996	7798142838180039	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	5dfe3f8c87981fa6
+70	5007	7798142838265990	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	2cced60cc342d15f
+129	5030	7798142838538271	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	1a42ac374d9b4bbd
+147	5075	7798142838999952	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	a2fbe75e11629d44
+99	5140	7798142839696268	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	ef73373afbc926f3
+113	5392	7798142842262526	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	f347a0c3cd3f267f
+36	5485	7798142843164356	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	1015732108b4a54c
+165	5753	7798142845908008	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	8439a212f4ec5032
+5753	5963	7798142848001100	D:/Game Engine 2d/BaiTap/Lab16-Game2D Chicken Shooter Prototype/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/Debug/2p611qbv/obj/arm64-v8a/libgame.so	b4bf7f3a30e27d0c

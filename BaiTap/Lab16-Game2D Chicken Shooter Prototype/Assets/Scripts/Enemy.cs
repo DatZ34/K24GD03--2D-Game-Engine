@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] protected float attackRate = 0.8f; // tốc độ bắn
     [SerializeField] protected int damage;
     [SerializeField] public int ScoreValue;
+    public bool HasShoot;
     [SerializeField] protected bool isBoss;
     [SerializeField] protected int flyPattern; // các kiểu bay của gà dc đánh số theo 1 , 2, 3 ,..
     [SerializeField] protected float dropRate; // phần trăm rơi đồ
@@ -18,6 +19,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] protected GameObject deathEffectPrefab; // hiệu ứng die
     [SerializeField] protected GameObject eggPrefab;
     [SerializeField] protected GameObject legPrefab;
+    [SerializeField] protected GameObject presentPrefab;
     [Header("Tùy chỉnh Hiệu ứng")]
     [SerializeField] protected Vector3 hitScale;
     [SerializeField] protected Vector3 deathScale;
@@ -38,7 +40,7 @@ public class Enemy : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected virtual void Start()
     {
-        //source.volume = AudioManager.instance.currentValueSoundEFX;
+        source.volume = AudioManager.instance.currentValueSoundEFX;
     }
 
     // Update is called once per frame
@@ -93,6 +95,7 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("bullet"))
         {
+            Debug.Log("hitchicken");
             Bullet bullet = collision.gameObject.GetComponent<Bullet>();
             if(bullet != null)
             {
@@ -139,7 +142,8 @@ public class Enemy : MonoBehaviour
     protected virtual void EnterRageMode() { } // nếu là boss
     #endregion
     #region Item
-    protected virtual void DropItem() { }
+    public virtual void DropPresent() { }
+    public virtual void DropLeg() { }
     protected virtual void AddScore() { }
     #endregion
 }

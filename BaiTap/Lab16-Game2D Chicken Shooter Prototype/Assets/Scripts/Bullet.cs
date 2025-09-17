@@ -26,6 +26,7 @@ public class Bullet : MonoBehaviour
     {
         if(collision.CompareTag("BackGround") || collision.gameObject.CompareTag("Enemy"))
         {
+            PlayerController.instance.energyShoot++;
             Destroy(gameObject);
         }
     }

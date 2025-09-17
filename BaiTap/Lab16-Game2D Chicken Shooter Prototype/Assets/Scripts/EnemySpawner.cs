@@ -10,7 +10,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private GameObject enemyBossPrefab;
     [SerializeField] private float spawnInterval = 30f;
     [SerializeField] private int maxEnemy = 10;
-
+    public bool isStage1 = true;
     [Header("Vị trí spawn")]
     [SerializeField] private float spawnYPercent = 1.1f;
 
@@ -25,27 +25,38 @@ public class EnemySpawner : MonoBehaviour
     private bool isSpawning = false;
     private bool isSpawn1Line = true;
 
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         DictionSaveObject = new Dictionary<int, Transform>();
-        InvokeRepeating("RandomShootEgg", 3, 5);
+        InvokeRepeating("RandomChickenShoot", 3, 2.5f);
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isSpawn1Line)
+        if (isStage1)
         {
-            CheckEnemyCount();
+            Stage1();
         }
+ 
+    }
+    public void Stage1()
+    {
+        CheckEnemyCount();
         if (!isSpawning && spawnContainer.childCount == 0)
         {
+            Debug.Log("[update]");
             isSpawning = true;
             currentWave++;
             StartCoroutine(SpawnWave(currentWave));
         }
+    }
+    void SpawnBoss()
+    {
+
     }
     void SpawnEnemy()
     {
@@ -74,29 +85,18 @@ public class EnemySpawner : MonoBehaviour
                     enemy.SetStopPoint(worldStopPos);
                 }
             }
-        }
-        else
-        {
-            for (int i = 1; i < 10; i++)
-            {
-                if (!DictionSaveObject.ContainsKey(i) || DictionSaveObject[i] == null)
-                {
-                    SpawnAtKey(i);
-                }
-                else if (DictionSaveObject[i].parent != spawnContainer)
-                {
-                    SpawnAtKey(i);
-                }
-            }
+            currentEnemyCount = spawnContainer.childCount;
         }
     }
-    void CheckEnemyCount()
+    public void CheckEnemyCount()
     {
         currentEnemyCount = spawnContainer.transform.childCount;
-        if(currentEnemyCount != maxEnemy)
+        if (currentEnemyCount == 0)
         {
-            SpawnEnemy();
+            isSpawning = false;
+            Debug.Log("[CheckEnemyCount] : child count: " + currentEnemyCount);
         }
+
     }
     public void SpawnAtKey(int key)
     {
@@ -141,6 +141,7 @@ public class EnemySpawner : MonoBehaviour
                 }
             }
         }
+        currentEnemyCount = spawnContainer.childCount;
     }
     public void SpawnVShape()
     {
@@ -166,6 +167,7 @@ public class EnemySpawner : MonoBehaviour
                 enemy.SetStopPoint(worldStopPos);
             }
         }
+        currentEnemyCount = spawnContainer.childCount;
     }
     private IEnumerator<WaitForSeconds> SpawnWave(int wave)
     {
@@ -186,8 +188,12 @@ public class EnemySpawner : MonoBehaviour
                 isSpawn1Line = false;
                 SpawnVShape(); // hình chữ V
                 break;
+            case 4:
+                isStage1 = false;
+
+                break;
             default:
-                SpawnEnemy(); // lặp lại kiểu đơn
+                isStage1 = false;
                 break;
         }
 
@@ -198,7 +204,7 @@ public class EnemySpawner : MonoBehaviour
     {
         if(spawnContainer != null)
         {
-            if(spawnContainer != null && spawnContainer.childCount > 0)
+            if(spawnContainer.childCount > 0)
             {
                 int randomIndex = Random.Range(0,spawnContainer.childCount);    
                 Transform randomChild = spawnContainer.GetChild(randomIndex);
@@ -206,7 +212,24 @@ public class EnemySpawner : MonoBehaviour
                 Enemy enemy = randomChild.GetComponent<Enemy>();
                 if(enemy != null)
                 {
-                    enemy.Shoot();
+                    if (!enemy.HasShoot)
+                    {
+                        enemy.Shoot();
+                    }
+                }
+            }
+        }
+    }
+    void RandomChickenShoot()
+    {
+        if(spawnContainer != null)
+        {
+            if( spawnContainer.childCount > 0 )
+            {
+                int randomIndex = Random.Range(0,spawnContainer.childCount / 3);
+                for(int i = 0; i < randomIndex; i++)
+                {
+                    Invoke("RandomShootEgg", i);
                 }
             }
         }
